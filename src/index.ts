@@ -1,9 +1,23 @@
-import logger from 'loglevel'
-import {startServer} from './start'
+import logger from "loglevel";
+import { startServer } from "./start";
 
-const isTest = process.env.NODE_ENV === 'test'
-const logLevel = process.env.LOG_LEVEL || (isTest ? 'warn' : 'info')
+const convertLogLevel: (logLevel: string | undefined) => logger.LogLevelDesc = (
+  logLevel: string | undefined,
+) => {
+  switch (logLevel) {
+    case "1":
+      return logger.levels.ERROR;
+    case "2":
+      return logger.levels.WARN;
+    default:
+      return logger.levels.INFO;
+  }
+};
 
-logger.setLevel(logLevel)
+const isTest = process.env.NODE_ENV === "test";
+const logLevel: logger.LogLevelDesc = convertLogLevel(process.env.LOG_LEVEL) ||
+  (isTest ? logger.levels.WARN : logger.levels.INFO);
 
-startServer()
+logger.setLevel(logLevel);
+
+startServer();
