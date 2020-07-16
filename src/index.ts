@@ -6,8 +6,10 @@ const convertLogLevel: (logLevel: string | undefined) => logger.LogLevelDesc = (
 ) => {
   switch (logLevel) {
     case "1":
+    case "error":
       return logger.levels.ERROR;
     case "2":
+    case "warn":
       return logger.levels.WARN;
     default:
       return logger.levels.INFO;
