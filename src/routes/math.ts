@@ -1,20 +1,28 @@
-import express from 'express'
+import express from "express";
 
 function getMathRoutes() {
-  const router = express.Router()
-  router.get('/add', add)
-  router.get('/subtract', subtract)
-  return router
+  const router = express.Router();
+  router.get("/add", add);
+  router.get("/subtract", subtract);
+  return router;
 }
 
-async function add(req, res) {
-  const sum = Number(req.query.a) + Number(req.query.c)
-  res.send(sum.toString())
+type MathQuery = {
+  a: number;
+  b: number;
+  c: number;
+};
+
+async function add(req: any, res: any) {
+  const mathQuery = req.query as MathQuery;
+  const sum = mathQuery.a + mathQuery.c;
+  res.send(sum.toString());
 }
 
-async function subtract(req, res) {
-  const difference = Number(req.query.a) - Number(req.query.b)
-  res.send(difference.toString())
+async function subtract(req: any, res: any) {
+  const mathQuery = req.query as MathQuery;
+  const difference = mathQuery.a - mathQuery.b;
+  res.send(difference.toString());
 }
 
-export {getMathRoutes}
+export { getMathRoutes };
