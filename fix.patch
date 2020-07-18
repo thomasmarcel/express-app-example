@@ -1,0 +1,42 @@
+diff --git a/index.ts b/index.ts
+index ae8d651..02b352a 100644
+--- a/index.ts
++++ b/index.ts
+@@ -1,5 +1,5 @@
+-if (process.env.NODE_ENV === 'production') {
+-  require('./dist')
++if (process.env.NODE_ENV === "production") {
++  require("./dist");
+ } else {
+-  require('nodemon')({script: 'dev.js'})
++  require("nodemon")({ script: "./dist/dev.js" });
+ }
+diff --git a/package.json b/package.json
+index 496ad82..50bfa7f 100644
+--- a/package.json
++++ b/package.json
+@@ -2,9 +2,9 @@
+   "name": "express-app-example",
+   "version": "1.0.0",
+   "description": "An example of how to structure medium-to-large sized Express apps",
+-  "main": "index.js",
++  "main": "./dist/index.js",
+   "engines": {
+-    "node": "14.5.0"
++    "node": "14.4.0"
+   },
+   "dependencies": {
+     "express": "^4.17.1",
+diff --git a/src/routes/math.ts b/src/routes/math.ts
+index 82ea60b..8cbb996 100644
+--- a/src/routes/math.ts
++++ b/src/routes/math.ts
+@@ -15,7 +15,7 @@ type MathQuery = {
+ 
+ async function add(req: any, res: any) {
+   const mathQuery = req.query as MathQuery;
+-  const sum = mathQuery.a + mathQuery.c;
++  const sum = Number(mathQuery.a) + Number(mathQuery.c);
+   res.send(sum.toString());
+ }
+ 

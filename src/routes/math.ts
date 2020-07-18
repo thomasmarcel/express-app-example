@@ -15,13 +15,13 @@ type MathQuery = {
 
 async function add(req: any, res: any) {
   const mathQuery = req.query as MathQuery;
-  const sum = mathQuery.a + mathQuery.c;
+  const sum = Number(mathQuery.a) + Number(mathQuery.c);
   res.send(sum.toString());
 }
 
 async function subtract(req: any, res: any) {
   const mathQuery = req.query as MathQuery;
-  const difference = mathQuery.a - mathQuery.b;
+  const difference = Number(mathQuery.a) - Number(mathQuery.b);
   res.send(difference.toString());
 }
 

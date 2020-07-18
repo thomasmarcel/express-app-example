@@ -2,9 +2,9 @@
   "name": "express-app-example",
   "version": "1.0.0",
   "description": "An example of how to structure medium-to-large sized Express apps",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "engines": {
-    "node": "14.5.0"
+    "node": "14.4.0"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -26,7 +26,7 @@
     "build": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src",
     "start:dev": "nodemon dist/index.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
-    "dev": "concurrently \"npm:build:dev\" \"npm:start:dev\""
+    "dev": "concurrently \"yarn build:dev\" \"yarn start:dev\""
   },
   "keywords": [],
   "author": "Kent C. Dodds <me@kentcdodds.com> (https://kentcdodds.com/), Thomas Alcala <@ThomasAlcala> (https://tomalcala.com/)",
