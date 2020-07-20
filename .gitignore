@@ -3,3 +3,5 @@ dist
 .*.swp
 /dist/*
 yarn-error.log
+
+.vercel

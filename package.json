@@ -4,7 +4,7 @@
   "description": "An example of how to structure medium-to-large sized Express apps",
   "main": "index.js",
   "engines": {
-    "node": "14.4.0"
+    "node": ">=12.x"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "build": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src",
+    "build": "rm -rf ./dist/* && tsc",
     "start:dev": "nodemon dist/index.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
     "dev": "concurrently \"yarn build:dev\" \"yarn start:dev\"",
