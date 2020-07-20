@@ -1,0 +1,13 @@
+sudo: false
+laguage: node_js
+cache:
+    directories:
+        - ~/.npm
+          ~/.cache
+notifications:
+    email: false
+node_js: '14'
+install: echo "install happens as part of setup"
+script: npm run setup
+branches:
+    only: master

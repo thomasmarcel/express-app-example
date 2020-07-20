@@ -2,3 +2,4 @@ node_modules
 dist
 .*.swp
 /dist/*
+yarn-error.log
